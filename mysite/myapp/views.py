@@ -4,6 +4,8 @@ from rest_framework import viewsets
 from myapp.serial import ModeSerializer, StateSerializer
 import requests
 import json
+import time
+from subprocess import call
 
 # Create your views here.
 
@@ -25,6 +27,7 @@ def home(request):
 
     if 'on' in request.POST:
         values = {'name': 'on'}
+        print("yo yo yo yo yo yo yo")
         r = requests.put('http://127.0.0.1:8000/state/6/', data=values, auth=('admin', 'admin'))
         result = r.text
         print("here is the result it's right here" + result)
@@ -33,7 +36,7 @@ def home(request):
 
     if 'off' in request.POST:
         values = {'name': 'off'}
-        r = requests.put('http://127.0.0.1:8000/state/1/', data=values, auth=('admin', 'admin'))
+        r = requests.put('http://127.0.0.1:8000/state/6/', data=values, auth=('admin', 'admin'))
         result = r.text
         output = json.loads(result)
         out = output['name']
@@ -61,5 +64,8 @@ def home(request):
     result = r.text
     output = json.loads(result)
     currentstate = output['name']
-
+    
+    
     return render(request, 'home.html', {'r':out, 'currentmode':currentmode, 'currentstate':currentstate})
+
+call(['python', 'myapp/controller.py'])
