@@ -67,7 +67,6 @@ def home(request):
 
     # call(['python', 'myapp/controller.py'])
 
-    
     return render(request, 'home.html', {'r':out, 'currentmode':currentmode, 'currentstate':currentstate})
 
 # call(['python', 'myapp/controller.py'])
