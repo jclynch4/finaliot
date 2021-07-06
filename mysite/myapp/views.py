@@ -64,8 +64,10 @@ def home(request):
     result = r.text
     output = json.loads(result)
     currentstate = output['name']
-    
+
+    # call(['python', 'myapp/controller.py'])
+
     
     return render(request, 'home.html', {'r':out, 'currentmode':currentmode, 'currentstate':currentstate})
 
-call(['python', 'myapp/controller.py'])
+# call(['python', 'myapp/controller.py'])
