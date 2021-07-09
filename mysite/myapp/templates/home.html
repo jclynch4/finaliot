@@ -7,12 +7,14 @@
 <body>
 <p>{{r}}</p>
 <h3>State</h3>
+<p>currently: {{currentstate}}</p>
 <form action="" method="post">{% csrf_token %}
 <input type="submit" name="on" value="on"/>
 <input type="submit" name="off" value="off"/>
 </form>
 <br>
 <h3>Mode</h3>
+<p>currently: {{currentmode}}</p>
 <form action="" method="post">{% csrf_token %}
 <input type="submit" name="auto" value="auto"/>
 <input type="submit" name="manual" value="manual"/>
