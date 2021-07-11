@@ -31,12 +31,15 @@ def getCurrentState():
 def setCurrentState(val):
     query = 'UPDATE myapp_state set name = "'+val+'"'
     cur.execute(query)
+    con.commit()
 
 def lightOn(PIN):
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(PIN, GPIO.OUT)
     GPIO.output(PIN, True)
 
 def lightOff(PIN):
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(PIN, GPIO.OUT)
     GPIO.output(PIN, False)
 

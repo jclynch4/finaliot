@@ -27,10 +27,8 @@ def home(request):
 
     if 'on' in request.POST:
         values = {'name': 'on'}
-        print("yo yo yo yo yo yo yo")
         r = requests.put('http://127.0.0.1:8000/state/6/', data=values, auth=('admin', 'admin'))
         result = r.text
-        print("here is the result it's right here" + result)
         output = json.loads(result)
         out = output['name']
 
@@ -52,8 +50,7 @@ def home(request):
         values = {'name': 'manual'}
         r = requests.put('http://127.0.0.1:8000/mode/1/', data=values, auth=('admin', 'admin'))
         result = r.text
-        output = json.loads(result)
-        out = output['name']
+        
 
     r = requests.get('http://127.0.0.1:8000/mode/1/', auth=('admin', 'admin'))
     result = r.text
